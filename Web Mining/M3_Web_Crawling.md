@@ -158,6 +158,52 @@ Adaptive crawlers are advanced crawlers designed to adjust their behavior based 
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+# InfoSpiders Algorithm
+
+## Overview
+InfoSpiders is an adaptive topical crawler that uses reinforcement learning to navigate the web without any supervised training. It is inspired by artificial life models and employs multiple agents to explore and learn based on web regularities.
+
+## Steps in the Algorithm
+
+1. **Initialization**:
+   - Create a population of agents.
+   - Each agent is initialized with a list of keywords related to the target topic.
+   - A neural network is set up for each agent to evaluate new links based on the occurrence of keywords.
+
+2. **Agent Exploration**:
+   - For each agent, identify a set of potential links on the current page.
+   - For each link `u`, the neural network receives input based on:
+     - Frequency of keywords near the anchor text.
+     - Higher weights for keywords that are closer to or in the anchor text.
+   - The neural network outputs a **Q value** (score) for each link based on these inputs.
+
+3. **Link Selection**:
+   - The agent selects the link `u` with the highest Q value and fetches the corresponding page.
+
+4. **Reward Calculation**:
+   - After fetching page `u`, calculate the reward `r(u)` based on page relevance to the target topic.
+   - Compute the **energy payoff** as the difference between the reward `r(u)` and the cost of fetching the page (based on factors like page size or latency).
+
+5. **Energy Management**:
+   - Update the agent’s energy level based on the energy payoff.
+   - If the agent's energy level falls to zero, the agent "dies" and is removed from the population.
+
+6. **Agent Reproduction**:
+   - If an agent’s energy exceeds a certain **threshold**, it reproduces, creating a new agent (offspring).
+   - The energy and link frontier are split between the original agent and the offspring.
+   - The offspring inherits the parent’s keyword list and learned parameters from the neural network, with potential variations to explore new regions.
+
+7. **Topical Locality Heuristic**:
+   - If an agent discovers a sequence of relevant pages in quick succession, increase the likelihood of exploring neighboring pages, assuming they are also relevant.
+
+8. **Termination**:
+   - The algorithm continues with agents exploring, reproducing, and dying until a stopping criterion is met, such as a maximum number of pages fetched or a time limit.
+
+## Summary
+InfoSpiders employ reinforcement learning and a neural network-based scoring mechanism to adaptively navigate and extract relevant web pages. Agents survive, reproduce, or die based on their energy levels, enabling an adaptive and self-evolving search process.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 # Evaluation and Ethics
 
 ## Evaluation of Crawlers
