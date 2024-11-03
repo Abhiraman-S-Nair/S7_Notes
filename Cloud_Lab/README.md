@@ -163,33 +163,37 @@
 
 # Linux Network Commands and Viva Questions
 
-## Linux Network Commands
+# Linux Network Commands
 
-1. `ifconfig` - Displays the current network configuration and interface settings.
-2. `ip addr` - Shows the IP addresses assigned to all network interfaces.
-3. `ping <hostname>` - Sends ICMP echo requests to check connectivity to a host.
-4. `traceroute <hostname>` - Traces the route packets take to a network host.
-5. `netstat` - Displays active network connections, routing tables, and interface statistics.
-6. `ss` - A utility to investigate sockets, showing more detailed information than `netstat`.
-7. `nslookup <domain>` - Queries DNS to obtain domain name or IP address mapping.
-8. `dig <domain>` - A more flexible DNS lookup utility than `nslookup`.
-9. `route` - Displays or modifies the IP routing table.
-10. `hostname` - Displays or sets the system's hostname.
-11. `curl <url>` - Transfers data from or to a server using various protocols (HTTP, FTP, etc.).
-12. `wget <url>` - Non-interactive downloader for web content.
-13. `ftp <hostname>` - Connects to an FTP server to upload or download files.
-14. `sftp <user@hostname>` - Secure file transfer program over SSH.
-15. `ssh <user@hostname>` - Secure shell for logging into a remote machine.
-16. `telnet <hostname>` - Connects to a remote host using Telnet (not secure).
-17. `arp` - Displays or modifies the ARP cache, which maps IP addresses to MAC addresses.
-18. `mtr <hostname>` - Combines `ping` and `traceroute` to diagnose network connectivity.
-19. `iptables` - Configures the Linux kernel's packet filtering rules.
-20. `nmap <hostname>` - Scans a host for open ports and services.
-21. `scp <file> <user@hostname>:<path>` - Securely copies files over SSH.
-22. `netcat <hostname> <port>` - Utility for reading from and writing to network connections.
-23. `iwconfig` - Configures wireless network interfaces.
-24. `ethtool <interface>` - Displays or modifies network interface settings.
-25. `ip link` - Shows and manages network interfaces.
+| Command                   | Description                                                 |
+|---------------------------|-------------------------------------------------------------|
+| `ifconfig`                | Displays or configures network interface parameters.        |
+| `ip addr`                 | Shows IP addresses assigned to all network interfaces.      |
+| `ping [hostname/IP]`      | Checks connectivity to a host.                              |
+| `traceroute [hostname]`   | Displays the route packets take to reach a network host.    |
+| `netstat -tuln`          | Lists all active listening ports and their associated protocols. |
+| `ss`                      | Displays socket statistics and can show established connections. |
+| `curl [URL]`             | Transfers data from or to a server using various protocols. |
+| `wget [URL]`             | Downloads files from the web.                               |
+| `scp [source] [user@host:destination]` | Securely copies files between hosts over SSH.        |
+| `rsync -avz [source] [destination]` | Synchronizes files/directories between two locations.   |
+| `telnet [hostname/IP] [port]` | Connects to a specified port on a remote host.               |
+| `nslookup [hostname]`    | Queries DNS to obtain domain name or IP address mapping.   |
+| `dig [hostname]`         | Performs DNS lookup and provides detailed information.      |
+| `route -n`               | Displays the kernel routing table.                           |
+| `ip route`               | Shows or manipulates the IP routing table.                  |
+| `iptables -L`            | Lists all current firewall rules.                            |
+| `nmap [hostname/IP]`     | Scans networks to discover hosts and services.              |
+| `arp -a`                 | Displays the ARP table, showing IP and MAC address mapping. |
+| `mtr [hostname]`         | Combines the functionality of `ping` and `traceroute`.     |
+| `hostname`                | Displays or sets the system's hostname.                     |
+| `whois [domain]`         | Retrieves information about a domain from the WHOIS database. |
+| `ifup [interface]`       | Activates a network interface.                              |
+| `ifdown [interface]`     | Deactivates a network interface.                            |
+| `sudo systemctl restart networking` | Restarts the networking service on the system.      |
+| `ethtool [interface]`     | Displays or changes Ethernet device settings.               |
+| `ip neigh`               | Displays the ARP table entries.                             |
+| `curl -I [URL]`          | Fetches HTTP headers from a web server.                     |
 
 ---
 
