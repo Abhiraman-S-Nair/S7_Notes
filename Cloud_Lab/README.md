@@ -31,3 +31,226 @@
 
 - **TCP** is suitable for applications where data integrity, order, and reliability are crucial. It requires a connection setup and has higher overhead, making it better for tasks like web browsing, file transfers, and emails.
 - **UDP** is a lightweight, fast protocol suitable for applications where low latency is essential, and some data loss is acceptable, like video streaming, online gaming, and VoIP.
+
+# TCP and UDP Questions and Answers
+
+## TCP Questions and Answers
+
+1. **What does TCP stand for?**
+   - **Answer:** Transmission Control Protocol.
+
+2. **What type of connection does TCP provide?**
+   - **Answer:** TCP provides a connection-oriented communication.
+
+3. **Does TCP guarantee data delivery?**
+   - **Answer:** Yes, TCP guarantees reliable data delivery through acknowledgments and retransmissions.
+
+4. **What is the maximum segment size (MSS) in TCP?**
+   - **Answer:** MSS is the largest segment of data that TCP is willing to receive in a single TCP segment.
+
+5. **How does TCP handle flow control?**
+   - **Answer:** TCP uses a sliding window mechanism for flow control, which ensures that a sender does not overwhelm a receiver with too much data.
+
+6. **What is a TCP three-way handshake?**
+   - **Answer:** A process that establishes a TCP connection using SYN, SYN-ACK, and ACK packets.
+
+7. **What port number does HTTP use over TCP?**
+   - **Answer:** HTTP uses port 80 by default.
+
+8. **Can TCP be used for streaming applications?**
+   - **Answer:** Yes, but it may introduce latency due to its reliability mechanisms, which might not be ideal for real-time streaming.
+
+9. **What is TCP segmentation?**
+   - **Answer:** TCP segmentation is the process of dividing application data into smaller segments for transmission.
+
+10. **How does TCP ensure data integrity?**
+    - **Answer:** TCP uses checksums to verify the integrity of data segments.
+
+11. **What happens if a TCP packet is lost?**
+    - **Answer:** The sender will retransmit the lost packet after a timeout period.
+
+12. **Is TCP suitable for applications requiring low latency?**
+    - **Answer:** No, because TCP's reliability mechanisms can introduce delays.
+
+13. **What does the TCP state "TIME_WAIT" indicate?**
+    - **Answer:** It indicates that a TCP connection has been closed but is waiting to ensure all packets are received before fully closing.
+
+14. **How is TCP different from UDP?**
+    - **Answer:** TCP is connection-oriented, provides reliability, and ensures data delivery, while UDP is connectionless, does not guarantee delivery, and has lower latency.
+
+15. **What is the purpose of TCP's flow control?**
+    - **Answer:** To prevent a fast sender from overwhelming a slow receiver with data.
+
+16. **What is the role of TCP's sequence numbers?**
+    - **Answer:** Sequence numbers are used to order packets and ensure that data is reassembled in the correct order.
+
+17. **What command can you use to see active TCP connections in Linux?**
+    - **Answer:** The `netstat` or `ss` command can be used to view active TCP connections.
+
+18. **What is the maximum transmission unit (MTU) in TCP?**
+    - **Answer:** MTU is the largest size of a packet that can be sent over a network. For Ethernet, it is typically 1500 bytes.
+
+19. **What does TCP's "urgent" flag do?**
+    - **Answer:** The urgent flag signals that certain data within the segment should be prioritized.
+
+20. **What are TCP ports used for?**
+    - **Answer:** TCP ports are used to identify specific processes or services running on a host.
+
+---
+
+## UDP Questions and Answers
+
+1. **What does UDP stand for?**
+   - **Answer:** User Datagram Protocol.
+
+2. **What type of connection does UDP provide?**
+   - **Answer:** UDP provides a connectionless communication.
+
+3. **Does UDP guarantee data delivery?**
+   - **Answer:** No, UDP does not guarantee reliable data delivery.
+
+4. **What is the maximum payload size of a UDP packet?**
+   - **Answer:** The maximum payload size is 65,507 bytes (including the UDP header).
+
+5. **What is a common use case for UDP?**
+   - **Answer:** UDP is commonly used for applications requiring real-time data transmission, such as video streaming and online gaming.
+
+6. **What port number does DNS use over UDP?**
+   - **Answer:** DNS uses port 53 by default.
+
+7. **How does UDP handle flow control?**
+   - **Answer:** UDP does not implement flow control; it sends packets without ensuring the receiver can handle them.
+
+8. **What happens if a UDP packet is lost?**
+   - **Answer:** If a UDP packet is lost, it is not retransmitted, and the application must handle any loss.
+
+9. **What is the structure of a UDP packet?**
+   - **Answer:** A UDP packet consists of a header (8 bytes) followed by the payload data.
+
+10. **Is UDP suitable for applications requiring low latency?**
+    - **Answer:** Yes, UDP is suitable for low-latency applications since it does not perform error checking and correction.
+
+11. **What does the UDP checksum do?**
+    - **Answer:** The UDP checksum is used to detect errors in the transmitted data.
+
+12. **Can UDP support multicasting?**
+    - **Answer:** Yes, UDP supports multicasting, allowing a single packet to be sent to multiple destinations.
+
+13. **What is the difference between UDP and TCP in terms of overhead?**
+    - **Answer:** UDP has less overhead compared to TCP because it does not maintain a connection or require acknowledgments.
+
+14. **What is the purpose of the source and destination ports in a UDP packet?**
+    - **Answer:** They identify the sending and receiving applications on the hosts.
+
+15. **Can a UDP socket be used for bi-directional communication?**
+    - **Answer:** Yes, a UDP socket can be used for bi-directional communication, but it does not establish a connection.
+
+16. **What command can you use to send a UDP packet from the command line?**
+    - **Answer:** The `nc` (netcat) command can be used to send UDP packets.
+
+17. **What are the advantages of using UDP?**
+    - **Answer:** Advantages include lower latency, reduced overhead, and ease of implementation for certain applications.
+
+18. **How does UDP handle packet ordering?**
+    - **Answer:** UDP does not guarantee packet ordering; packets may arrive out of order.
+
+19. **What is a common example of a protocol that uses UDP?**
+    - **Answer:** The Real-time Transport Protocol (RTP) used for streaming media often runs over UDP.
+
+20. **Can UDP be used over the internet?**
+    - **Answer:** Yes, UDP can be used over the internet for applications that do not require guaranteed delivery or ordering.
+
+
+# Linux Network Commands and Viva Questions
+
+## Linux Network Commands
+
+1. `ifconfig` - Displays the current network configuration and interface settings.
+2. `ip addr` - Shows the IP addresses assigned to all network interfaces.
+3. `ping <hostname>` - Sends ICMP echo requests to check connectivity to a host.
+4. `traceroute <hostname>` - Traces the route packets take to a network host.
+5. `netstat` - Displays active network connections, routing tables, and interface statistics.
+6. `ss` - A utility to investigate sockets, showing more detailed information than `netstat`.
+7. `nslookup <domain>` - Queries DNS to obtain domain name or IP address mapping.
+8. `dig <domain>` - A more flexible DNS lookup utility than `nslookup`.
+9. `route` - Displays or modifies the IP routing table.
+10. `hostname` - Displays or sets the system's hostname.
+11. `curl <url>` - Transfers data from or to a server using various protocols (HTTP, FTP, etc.).
+12. `wget <url>` - Non-interactive downloader for web content.
+13. `ftp <hostname>` - Connects to an FTP server to upload or download files.
+14. `sftp <user@hostname>` - Secure file transfer program over SSH.
+15. `ssh <user@hostname>` - Secure shell for logging into a remote machine.
+16. `telnet <hostname>` - Connects to a remote host using Telnet (not secure).
+17. `arp` - Displays or modifies the ARP cache, which maps IP addresses to MAC addresses.
+18. `mtr <hostname>` - Combines `ping` and `traceroute` to diagnose network connectivity.
+19. `iptables` - Configures the Linux kernel's packet filtering rules.
+20. `nmap <hostname>` - Scans a host for open ports and services.
+21. `scp <file> <user@hostname>:<path>` - Securely copies files over SSH.
+22. `netcat <hostname> <port>` - Utility for reading from and writing to network connections.
+23. `iwconfig` - Configures wireless network interfaces.
+24. `ethtool <interface>` - Displays or modifies network interface settings.
+25. `ip link` - Shows and manages network interfaces.
+
+---
+
+## Viva Questions and Answers on Network Commands
+
+1. **What is the purpose of the `ping` command?**
+   - **Answer:** `ping` is used to check the reachability of a host on a network by sending ICMP echo requests and measuring the response time.
+
+2. **How do you display the current IP address in Linux?**
+   - **Answer:** You can use the `ip addr` command to display the current IP addresses assigned to all network interfaces.
+
+3. **What is the difference between `tcp` and `udp`?**
+   - **Answer:** TCP (Transmission Control Protocol) is connection-oriented and provides reliable data transfer, while UDP (User Datagram Protocol) is connectionless and does not guarantee delivery.
+
+4. **How can you check open ports on a server?**
+   - **Answer:** You can use the `nmap <hostname>` command to scan a host for open ports and the services running on them.
+
+5. **What command would you use to check the routing table in Linux?**
+   - **Answer:** The `route` command can be used to display or modify the IP routing table.
+
+6. **Explain the purpose of `curl`.**
+   - **Answer:** `curl` is used to transfer data to or from a server using various protocols, including HTTP, FTP, and more.
+
+7. **What is `ssh` used for?**
+   - **Answer:** SSH (Secure Shell) is used to securely log into a remote machine and execute commands.
+
+8. **How do you download a file using `wget`?**
+   - **Answer:** You can use the command `wget <url>` to download files from the web non-interactively.
+
+9. **What does the `traceroute` command do?**
+   - **Answer:** `traceroute` traces the route that packets take to reach a network host, showing each hop along the way.
+
+10. **How can you list network interfaces in Linux?**
+    - **Answer:** You can use the `ip link` command to list all network interfaces and their status.
+
+11. **What is the purpose of the `ftp` command?**
+    - **Answer:** The `ftp` command is used to connect to an FTP server to upload or download files.
+
+12. **Explain the significance of the `iptables` command.**
+    - **Answer:** `iptables` is used to configure the Linux kernel's packet filtering rules for controlling network traffic.
+
+13. **How do you configure a wireless network interface?**
+    - **Answer:** You can use the `iwconfig` command to configure wireless network interfaces and view their settings.
+
+14. **What is `scp` and how is it used?**
+    - **Answer:** `scp` (Secure Copy Protocol) is used to securely copy files over SSH between local and remote hosts.
+
+15. **How can you view active network connections?**
+    - **Answer:** You can use the `netstat` command to view active network connections and their status.
+
+16. **What is the purpose of `nslookup`?**
+    - **Answer:** `nslookup` is used to query DNS to obtain the domain name or IP address mapping.
+
+17. **What does the `mtr` command combine?**
+    - **Answer:** `mtr` combines the functionalities of `ping` and `traceroute` to diagnose network connectivity.
+
+18. **How do you check the ARP cache in Linux?**
+    - **Answer:** You can use the `arp` command to display or modify the ARP cache, which maps IP addresses to MAC addresses.
+
+19. **What does `ss` command do?**
+    - **Answer:** The `ss` command is used to investigate sockets and show more detailed information than `netstat`.
+
+20. **What is the main difference between `telnet` and `ssh`?**
+    - **Answer:** `telnet` is an unsecured protocol used for remote connections, while `ssh` provides a secure encrypted connection for remote access.
