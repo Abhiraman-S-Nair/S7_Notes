@@ -2,6 +2,7 @@ import socket
 import tkinter as tk
 from tkinter import filedialog, simpledialog, messagebox
 import threading
+import csv
 
 
 class ClientApp:
@@ -59,14 +60,31 @@ class ClientApp:
             messagebox.showwarning("Warning", "Text area is empty!")
 
     def send_file(self):
-        file_path = filedialog.askopenfilename(filetypes=[("Text files", "*.txt")])
+        # Allow selecting both text and CSV files
+        file_path = filedialog.askopenfilename(filetypes=[("Text files", "*.txt"), ("CSV files", "*.csv")])
+
         if file_path:
-            with open(file_path, 'r') as file:
-                data = file.read()
-                # Send the file data to the server
-                self.client_socket.sendall(data.encode('utf-8'))
+            data = ""
+
+            if file_path.endswith('.txt'):
+                # Read text file data
+                with open(file_path, 'r') as file:
+                    data = file.read()
+
+            elif file_path.endswith('.csv'):
+                # Read CSV file data
+                with open(file_path, newline='', encoding='utf-8') as file:
+                    reader = csv.reader(file)
+                    # Convert CSV content to a string
+                    data = "\n".join([",".join(row) for row in reader])
+
+            # Send the file data to the server
+            self.client_socket.sendall(data.encode('utf-8'))
+
             # Send specific word to the server
             self.client_socket.sendall((self.specific_word or 'NONE').encode('utf-8'))
+
+            # Receive and process the result from server
             self.receive_result()
 
     def receive_result(self):
