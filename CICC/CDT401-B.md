@@ -1,4 +1,4 @@
-# University Term Paper Questions and Answers
+# [Detailed Answers to Term Paper Questions](./CDT401-B.pdf)
 
 ## 1. Explain the concept of Single System Image (SSI) in a computing cluster. (3)
 1. **Definition**: SSI refers to the abstraction where a cluster appears as a single system to users and applications.
